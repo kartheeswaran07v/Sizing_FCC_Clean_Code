@@ -1,0 +1,813 @@
+{% block content %}
+{% include "header.html" %}
+
+
+<div class="col-10">
+  <div class="row head">
+
+    <div class="col-1">
+      <div class="row" style="margin-top:30px;">
+        <div class="col-12">
+          <i class="fa-solid fa-users fa-2x" data-toggle="tooltip" title="User"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+        <h5 style="text-align: center;">Project</h5>
+        <div class="col-2">
+          <i class="fa-solid fa-folder-plus fa-1x" data-toggle="tooltip" title="Create Project"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-folder-minus fa-1x" data-toggle="tooltip" title="Delete Project"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Copy Project"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-download fa-1x" data-toggle="tooltip" title="Import Project"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-upload fa-1x" data-toggle="tooltip" title="Export Project"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-sliders fa-1x" data-toggle="tooltip" title="Preference"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="row">
+        <div class="col-12" style="text-align: center;">
+          <p style="border: groove; border-radius: 0px;">AQ {{item_d.tag_no}} 00{{item_d.id}} {{item_d.alt}}</p>
+        </div>
+        <div class="col-3">
+          <i class="fa-solid fa-backward-fast fa-1x"></i><br>
+          <label for="">First</label>
+        </div>
+        <div class="col-3">
+          <i class="fa-solid fa-backward-step fa-1x"></i><br>
+          <label for="">Prev.</label>
+        </div>
+        <div class="col-3">
+          <i class="fa-solid fa-forward-step fa-1x"></i><br>
+          <label for="">Next</label>
+        </div>
+        <div class="col-3">
+          <i class="fa-solid fa-forward-fast fa-1x"></i><br>
+          <label for="">Last</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-3">
+      <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove; ">
+        <h5 style="text-align: center;">Item</h5>
+        <div class="col-2">
+          <i class="fa-solid fa-file-circle-plus fa-1x" data-toggle="tooltip" title="Create Item"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-file-circle-minus fa-1x" data-toggle="tooltip" title="Delete Item"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Item Copy"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-file-export fa-1x" data-toggle="tooltip" title="Copy From"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-solid fa-file-import fa-1x" data-toggle="tooltip" title="Copy To"></i>
+        </div>
+        <div class="col-2">
+          <i class="fa-regular fa-object-ungroup fa-1x" data-toggle="tooltip" title="Alternate"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-1">
+      <div class="row" style="margin-top:25px;">
+        <div class="col-12">
+          <i class="fa-solid fa-print fa-2x" data-toggle="tooltip" title="Print"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <form action="{{ url_for('valveSelection') }}" method="post">
+    <div class="row">
+      <div class="row tools" style="text-align: center; margin-left: 3px; margin-right: 3px;margin-top:20px; ">
+        <div class="col-12">
+          <div class="row">
+            <div class="col-3 tools" style='text-align: left; '>
+              <label for="std">Design Standard</label>
+              <select name="std" id="std" style="height: 25px; width: 80px;">
+                <option value="ASME">ASME</option>
+                <option value="API">API</option>
+              </select>
+            </div>
+            <div class="col-3 tools" style='text-align: left; '>
+              <label for="fState">Fluid State</label>
+              <select name="fState" id="fState" style="height: 25px; width: 80px;">
+                <option value="Liquid">Liquid</option>
+                <option value="Gas">Gas</option>
+              </select>
+            </div>
+            <div class="col-3 tools" style='text-align: left; '>
+              <label for="vStyle">Valve Style</label>
+              <select name="vStyle" id="vStyle" style="height: 25px; width: 80px;">
+                <option value="Globe">Globe</option>
+                <option value="Butterfly">Butterfly</option>
+              </select>
+            </div>
+          </div>
+
+
+
+          <div class="row" style="margin-top:20px; ">
+            <div class="col-3 tools" style="background-color: #EAEAEA;">
+
+              <div class="row" style="margin-top:10px;">
+                <h5 class="" style="text-align: left" ;>Valve Identification</h5>
+
+                <div class="col-6" style='text-align: right;'>
+                  <label for="tag">Tag</label>
+                </div>
+                <div class="col-6" style='text-align: left;'>
+                  <input type="text" name="tag" id="tag" style="width: 100px;">
+                </div>
+                <div class="col-6" style='text-align: right;'>
+                  <label for="qty">Quantity</label>
+                </div>
+                <div class="col-6" style='text-align: left;'>
+                  <input type="text" name="qty" id="qty" value="" style="width: 100px;">
+                </div>
+                <div class="col-6" style='text-align: right;'>
+                  <label for="application">Application</label>
+                </div>
+                <div class="col-6" style='text-align: left;'>
+                  <input type="text" name="application" id="application" value="" style="width: 100px;">
+                </div>
+                <div class="col-6" style='text-align: right;'>
+                  <label for="sNo">Serial No</label>
+                </div>
+                <div class="col-6" style='text-align: left;'>
+                  <input type="text" name="sNo" id="sNo" value="" style="width: 100px;">
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-top:30px;">
+                <div class="col-12 tools">
+                  <h5 class="" style="text-align: left" ;>Pressure-Temperature Rating</h5>
+
+                  <div class="row" style="margin-top:20px;">
+<!--                    <div class="col-6" style='text-align: right;'>-->
+<!--                      <label for="ratingP">Rating</label>-->
+<!--                    </div>-->
+<!--                    <div class="col-3">-->
+<!--                      <select name="ratingP" id="ratingP" style="width: 120px;height:25px;">-->
+<!--                        {% for i in data[0] %}-->
+<!--                          <option value="{{i.id}}">ASME {{i.size}}</option>-->
+<!--                        {% endfor %}-->
+<!--                      </select>-->
+<!--                    </div>-->
+<!--                    <div class="col-3"> </div>-->
+                    <div class="col-6" style='text-align: right;'>
+                      <label for="bMaterial">Body Material</label>
+                    </div>
+                    <div class="col-3">
+<!--                      <select name="bMaterial" id="bMaterial" style="width: 120px;height:25px;">-->
+<!--                          <option value="Globe">Globe</option>-->
+<!--                          <option value="Angle">Angle</option>-->
+<!--                          <option value="Globe Short Z">Globe Short Z</option>-->
+<!--                          <option value="Globe Long Z">Globe Long Z</option>-->
+<!--                          <option value="3-Way">3-Way</option>-->
+<!--                          <option value="3-Way Angle">3-Way Angle</option>-->
+<!--                          <option value="BF Wafer">BF Wafer</option>-->
+<!--                          <option value="BF Lugged Wafer">BF Lugged Wafer</option>-->
+<!--                          <option value="BF DF Short">BF DF Short</option>-->
+<!--                          <option value="">BF DF Long</option>-->
+<!--                          <option value="">BF Weld End</option>-->
+<!--                          <option value="">Ball Flanged</option>-->
+<!--                          <option value="">ball Flanged Wafer</option>-->
+<!--                          <option value="">Ball Screwed NPT</option>-->
+<!--                          <option value="">Ball Screwed BSPT</option>-->
+<!--                          <option value="">Ball Screwed BSP</option>-->
+<!--                          <option value="">Ball Socket Weld</option>-->
+<!--                          <option value="">Ball Butt Weld</option>-->
+<!--                          <option value="">None</option>-->
+
+<!--                      </select>-->
+
+                      <select name="bMaterial" id="bMaterial" style="width: 120px;height:25px;">
+                        {% for i in data[1] %}
+                          <option value="{{i.id}}">{{i.name}}</option>
+                        {% endfor %}
+                      </select>
+
+
+                    </div>
+
+                    <!-- <div class="col-3">
+                        <select name="" id="" style="width: 50px; height:25px;">
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                          <option value="">4</option>
+                        </select>
+                      </div> -->
+
+                    <div class="col-6" style='text-align: right;'>
+                      <label for="shutOffP">Shut-Off ΔP</label>
+                    </div>
+                    <div class="col-3">
+                      <input type="text" name="shutOffP" id="shutOffP" value="" style="width: 50px;height:25px;">
+                    </div>
+
+                    <div class="col-3">
+                      <select name="" id="" style="width: 50px;height:25px;">
+                        <option value="bar">bar</option>
+                        <option value="kpa">KPa</option>
+                        <option value="mpa">MPa</option>
+                        <option value="pa">Pa</option>
+                        <option value="kg/cm2">kg/cm²</option>
+                        <option value="psia">psi</option>
+                      </select>
+                    </div>
+
+                    <div class="col-6" style='text-align: right;'>
+                      <label for="maxP">Max Pressure</label>
+                    </div>
+                    <div class="col-3">
+                      <input type="text" name="maxP" id="maxP" value="" style="width: 50px;height:25px;">
+                    </div>
+
+                    <div class="col-3">
+                      <select name="" id="" style="width: 50px;height:25px;">
+                        <option value="bar">bar(g)</option>
+                        <option value="bar">bar(a)</option>
+                        <option value="kpa">KPa(a)</option>
+                        <option value="kpa">KPa(g)</option>
+                        <option value="mpa">MPa(a)</option>
+                        <option value="mpa">MPa(g)</option>
+                        <option value="pa">Pa(a)</option>
+                        <option value="pa">Pa(g)</option>
+                        <option value="inh20">in H2O(a)</option>
+                        <option value="inh20">in H2O(g)</option>
+                        <option value="inhg">in Hg(a)</option>
+                        <option value="inhg">in Hg(g)</option>
+                        <option value="kg/cm2">kg/cm²(a)</option>
+                        <option value="kg/cm2">kg/cm²(g)</option>
+                        <option value="">m H20(a)</option>
+                        <option value="mmh20">m H20(g)</option>
+                        <option value="mbar">mbar(a)</option>
+                        <option value="mbar">mbar(g)</option>
+                        <option value="mmhg">mm Hg(a)</option>
+                        <option value="mmhg">mm Hg(g)</option>
+                        <option value="psia">psi(a)</option>
+                        <option value="psia">psi(g)</option>
+                      </select>
+                    </div>
+
+                    <div class="col-6" style='text-align: right;'>
+                      <label for="maxT">Max Temp</label>
+                    </div>
+                    <div class="col-3">
+                      <input type="text" name="maxT" id="maxT" value="" style="width: 50px;height:25px;">
+                    </div>
+
+                    <div class="col-3">
+                      <select name="" id="" style="width: 50px;height:25px;">
+                        <option value="C">°C</option>
+                        <option value="F">°F</option>
+                        <option value="K">K</option>
+                        <option value="R">R</option>
+                      </select>
+                    </div>
+                    <div class="col-6" style='text-align: right;'>
+                      <label for="minT">Min Temp</label>
+                    </div>
+
+                    <div class="col-3">
+                      <input type="text" name="minT" id="minT" value="" style="width: 50px;height:25px;">
+                    </div>
+
+                    <div class="col-3">
+                      <select name="" id="" style="width: 50px;height:25px;">
+                        <option value="C">°C</option>
+                        <option value="F">°F</option>
+                        <option value="K">K</option>
+                        <option value="R">R</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="col-4 tools">
+              <div class="row" style="margin-left: 5px; margin-right:5px;">
+                <div class="col-12">
+                  <h5 class="" style="text-align: left;margin-top:10px;" ;>Valve Selection</h5>
+                </div>
+                <div class="row">
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="vSeries">Valve Series</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="vSeries" id="vSeries" style="width: 100px;height:25px;">
+
+                      {% for i in data[2] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+
+<!--                  <div class="col-7" style='text-align: right;'>-->
+<!--                    <label for="vSize">Valve Size</label>-->
+<!--                  </div>-->
+<!--                  <div class="col-5">-->
+<!--                    <select name="vSize" id="vSize" style="width: 100px;height:25px;">-->
+<!--                      {% for i in data[3] %}-->
+<!--                        <option value="{{i.id}}">{{i.size}}</option>-->
+<!--                      {% endfor %}-->
+<!--                    </select>-->
+<!--                  </div>-->
+
+
+<!--                  <div class="col-7" style='text-align: right;'>-->
+<!--                    <label for="ratingV">Rating</label>-->
+<!--                  </div>-->
+<!--                  <div class="col-5">-->
+<!--                    <select name="ratingV" id="ratingV" style="width: 100px;height:25px;">-->
+<!--                      {% for i in data[0] %}-->
+<!--                        <option value="{{i.id}}">{{i.size}}</option>-->
+<!--                      {% endfor %}-->
+<!--                    </select>-->
+<!--                  </div>-->
+
+
+<!--                  <div class="col-7" style='text-align: right;'>-->
+<!--                    <label for="cv">Rated Cv</label>-->
+<!--                  </div>-->
+<!--                  <div class="col-5">-->
+<!--                    <select name="cv" id="cv" style="width: 100px;height:25px;">-->
+<!--                      <option value="">1</option>-->
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+<!--                    </select>-->
+<!--                  </div>-->
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="endConnection">End Connection</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="endConnection" id="endConnection" style="width: 100px;height:25px;">
+                      {% for i in data[5] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="endFinish">End Finish</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="endFinish" id="endFinish" style="width: 100px;height:25px;">
+                      {% for i in data[4] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <!-- <div class="col-7" style='text-align: right;'>
+                      <label for="">Bonnet Material</label>
+                    </div>
+
+                    <div class="col-5">
+                      <select name="" id="" style="width: 100px;height:25px;">
+                        <option value="">1</option>
+                        <option value="">2</option>
+                        <option value="">3</option>
+                        <option value="">4</option>
+                      </select>
+                    </div> -->
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="bonnetType">Bonnet Type</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="bonnetType" id="bonnetType" style="width: 100px;height:25px;">
+                      {% for i in data[6] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="bed"> Bonnet Ext Dimension</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="bed" id="bed" style="width: 100px;height:25px;">
+                      {% for i in data[7] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="packingType">Packing Type</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="packingType" id="packingType" style="width: 100px;height:25px;">
+                      {% for i in data[7] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="trimType">Trim Type</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="trimType" id="trimType" style="width: 100px;height:25px;">
+                      {% for i in data[8] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="flowCharacter">Flow Character</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="flowCharacter" id="flowCharacter" style="width: 100px;height:25px;">
+                      {% for i in data[9] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="flowDirection">Flow Direction</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="flowDirection" id="flowDirection" style="width: 100px;height:25px;">
+                      {% for i in data[10] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+                  <div class="col-7" style='text-align: right;'>
+                    <label for="SLClass">Seat Leakage Class</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="SLClass" id="SLClass" style="width: 100px;height:25px;">
+                      {% for i in data[11] %}
+                        <option value="{{i.id}}">{{i.name}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="col-5 tools" style="text-align: right;background-color: #EAEAEA;">
+              <h5 class="" style="text-align: left; margin-top: 10px; ">Material Selection</h5>
+
+              <div class="row" style="margin-top: 10px;">
+                <div class="col-5">
+                  <label for="">Body</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;radius:0px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Bonnet</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;radius:0px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Body-Bonnet NDE1</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;radius:0px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Body-Bonnet NDE2</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;radius:0px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Plug</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Stem</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Seat</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">PTFE Filled</option>
+                    <option value="">Metal</option>
+                    <option value="">Firesafe</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Cage / Clamp</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Balance Scal</label>
+                </div>
+
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Packing</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">PTFE / Ceramic</option>
+                    <option value="">PTFE / Ni-Reist</option>
+                    <option value="">PTFE / DU-Glacier</option>
+                    <option value="">PTFE / DUB Glacier</option>
+                    <option value="">PTFE / MP2</option>
+                    <option value="">PTFE / MP3</option>
+                    <option value="">PTFE / 316-Armaloy</option>
+                    <option value="">PTFE / Norglide IS</option>
+                    <option value="">PTFE / Stellite</option>
+                    <option value="">PTFE / N.60-Armaloy</option>
+                    <option value="">Graphite / Ceramic</option>
+                    <option value="">Graphite / Ni-Reist</option>
+                    <option value="">Graphite / DU-Glacier</option>
+                    <option value="">Graphite / DUB Glacier</option>
+                    <option value="">Graphite / MP2</option>
+                    <option value="">Graphite / MP3</option>
+                    <option value="">Graphite / 316-Armaloy</option>
+                    <option value="">Graphite / Norglide IS</option>
+                    <option value="">Graphite / Stellite</option>
+                    <option value="">Graphite / N.60-Armaloy</option>
+                    <option value="">High Integrity Gland</option>
+                    <option value="">Hig Supagraf</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Stud / Nut</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-5">
+                  <label for="">Gasket</label>
+                </div>
+                <div class="col-5">
+                  <select name="" id="" style="width: 100px; height:25px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                  <div class="popup" onclick="myFunction()">Notes
+                    <span class="popuptext" id="myPopup">Notes Loading</span>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <!-- <div class="row">
+                  <div class="col-5">
+                    <label for="">Packing</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="" id="" style="width: 100px; height:25px;">
+                      <option value="">1</option>
+                      <option value="">2</option>
+                      <option value="">3</option>
+                      <option value="">4</option>
+                    </select>
+                    <div class="popup" onclick="myFunction()">Notes
+                      <span class="popuptext" id="myPopup">Notes Loading</span>
+                    </div>
+                  </div>
+                </div> -->
+
+
+              <!-- <div class="row" >
+                  <div class="col-5">
+                    <label for="">Stud</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="" id="" style="width: 100px; height:25px;">
+                      <option value="">1</option>
+                      <option value="">2</option>
+                      <option value="">3</option>
+                      <option value="">4</option>
+                    </select>
+                    <div class="popup" onclick="myFunction()">Notes
+                      <span class="popuptext" id="myPopup">Notes Loading</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" >
+                  <div class="col-5">
+                    <label for="">Nut</label>
+                  </div>
+                  <div class="col-5">
+                    <select name="" id="" style="width: 100px;height:25px;">
+                      <option value="">1</option>
+                      <option value="">2</option>
+                      <option value="">3</option>
+                      <option value="">4</option>
+                    </select>
+                    <div class="popup" onclick="myFunction()">Notes
+                      <span class="popuptext" id="myPopup">Notes Loading</span>
+                    </div>
+                  </div>
+                </div> -->
+            </div>
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <input type="submit" name="update" value="Update Item">
+    <input type="submit" name="new" value="Create New Item">
+  </form>
+
+  <script>
+    // When the user clicks on div, open the popup
+    function myFunction() {
+      var popup = document.getElementById("myPopup");
+      popup.classList.toggle("show");
+    }
+  </script>
+
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+
+
+
+  {% include "footer.html" %}
+  {% endblock %}

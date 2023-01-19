@@ -1,0 +1,453 @@
+{% block content %}
+{% include "header.html" %}
+
+
+
+    <div class="col-10">
+      <div class="row head">
+
+        <div class="col-1">
+          <div class="row" style="margin-top:30px;">
+            <div class="col-12">
+              <i class="fa-solid fa-users fa-2x" data-toggle="tooltip" title="User"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+            <h5 style="text-align: center;">Project</h5>
+            <div class="col-2">
+              <i class="fa-solid fa-folder-plus fa-1x" data-toggle="tooltip" title="Create Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-folder-minus fa-1x" data-toggle="tooltip" title="Delete Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Copy Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-download fa-1x" data-toggle="tooltip" title="Import Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-upload fa-1x" data-toggle="tooltip" title="Export Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-sliders fa-1x" data-toggle="tooltip" title="Preference"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="row">
+            <div class="col-12" style="text-align: center;">
+              <p style="border: groove; border-radius: 0px;">AQ {{item_d.tag_no}} 00{{item_d.id}} {{item_d.alt}}</p>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-backward-fast fa-1x"></i><br>
+              <label for="">First</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-backward-step fa-1x"></i><br>
+              <label for="">Prev.</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-forward-step fa-1x"></i><br>
+              <label for="">Next</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-forward-fast fa-1x"></i><br>
+              <label for="">Last</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-3" >
+          <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+          <h5 style="text-align: center;">Item</h5>
+            <div class="col-2">
+              <i class="fa-solid fa-file-circle-plus fa-1x" data-toggle="tooltip" title="Create Item"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-circle-minus fa-1x" data-toggle="tooltip" title="Delete Item"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Item Copy"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-export fa-1x" data-toggle="tooltip" title="Copy From"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-import fa-1x" data-toggle="tooltip" title="Copy To"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-object-ungroup fa-1x" data-toggle="tooltip" title="Alternate"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row" style="margin-top:30px;">
+            <div class="col-12">
+              <i class="fa-solid fa-print fa-2x" data-toggle="tooltip" title="Print"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row" style="margin-left:0px; margin-bottom:10px; margin-top:20px">
+        <div class="col-8" style='text-align: left;'>
+          <button class=" btn:hover btn" type="button" style="width: 250px;height:35px;">Sliding Stem Actuator Sizing</button>
+          <button class=" btn:hover btn" type="button" style="width: 200px;height:35px;">Rotary Actuator Sizing</button>
+        </div>
+      </div>
+
+
+      <div class="row" style="margin-left: 3px;margin-top: 20px;">
+        <div class="col-4 tools" style="background-color: #EAEAEA;">
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-12">
+              <h5 style="text-align: left" ;>Valve Data</h5>
+            </div>
+            <div class="row" style="margin-top: 0px;">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Valve Size</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Rating</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Valve Balancing</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Trim Type</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Stroke</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Seat Dia</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Seal Dia</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Stem Dia</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Packing Material</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="col-4 tools">
+          <div class="row"style="margin-top:10px;">
+            <div class="col-12">
+              <h5 style="text-align: left;" ;>Actuator Data</h5>
+            </div>
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Series</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Act.Stroke</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Size</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Spring</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Handwheel</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Travel Stops</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Fail Action</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Orientation</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Max.Air Supply</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Set Pressure</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <h1></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-3 tools" style="margin-bottom: 10px;margin-left: 10px;margin-right: 3px;">
+          <div class="row">
+            <div class="col-12">
+              <h5 style="text-align: left" ;>Comments</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12" style='text-align: left;'>
+              <input type="text" style=" height: 200px;  width: 300px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="row" style="margin-left: 3px;margin-top:0px; ">
+        <div class="col-4 tools" style=" margin-bottom:10px; margin-top:0px;background-color: #EAEAEA;">
+          <div class="row">
+            <div class="col-12">
+              <h5 style="text-align: left" ;>Valve Force lbf</h5>
+            </div>
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Valve Open</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Valve Closed</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Shut Off Case</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Shut Off & Seat</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6" style='text-align: right;'>
+                <label for="fname">Shut Off & Seat P2<>0</label>
+              </div>
+              <div class="col-6" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12" style='text-align: center;'>
+                <label for="fname">Friction Included=25.0 lbsf</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 tools">
+          <div class="row" style="margin-top:20px;">
+            <div class="col-12">
+              <h5 style="text-align: left" ;>Actuator Thrust lbf</h5>
+            </div>
+
+            <div class="row" style="margin-left:38px;">
+              <div class="col-3" style='text-align: center;'>
+                <label for="fname"></label>
+              </div>
+              <div class="col-3" style='text-align: center;'>
+                <label for="fname">Retracting</label>
+              </div>
+              <div class="col-3" style='text-align: center;'>
+                <label for="fname">Extending</label>
+              </div>
+              <div class="col-3" style='text-align: center;'>
+                <label for="fname">Air Failure</label>
+              </div>
+            </div>
+
+            <div class="row" style="margin-left:38px;">
+              <div class="col-3" style='text-align: right;'>
+                <label for="fname">Valve Open</label>
+              </div>
+              <div class="col-3" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+              <div class="col-3" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+              <div class="col-3" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+
+
+            <div class="row" style="margin-left:38px;">
+              <div class="col-3" style='text-align: right;'>
+                <label for="fname">Valve Close</label>
+              </div>
+              <div class="col-3" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+              <div class="col-3" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+              <div class="col-3" style='text-align: left;'>
+                <input type="text" style="width: 100px;height:20px;">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h1></h1>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      $('[data-toggle="tooltip"]').tooltip();
+    });
+  </script>
+
+
+{% include "footer.html" %}
+{% endblock %}

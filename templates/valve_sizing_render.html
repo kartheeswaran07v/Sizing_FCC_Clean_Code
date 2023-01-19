@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Test</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Crimson+Text&family=EB+Garamond&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a18974e73a.js" crossorigin="anonymous"></script>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="static/styles.css">
+
+
+</head>
+
+<body>
+
+  <div class="row" style="margin-top:3px;">
+    <div class="col-2 nav-items" style="height:700px;">
+      <img src="Logo.png" alt="" style="width: 80%; text-align: left;margin-bottom: 10px;">
+      <p><a href="{{url_for('home')}}"> DashBoard</a></p>
+      <p><a href="{{url_for('projectDetails')}}">Project Details</a></p>
+      <p><a href="{{url_for('valveSelection')}}">Valve Selection</a></p>
+      <p><a href="{{url_for('valveSizing')}}">Valve Sizing</a></p>
+      <!-- <p><a href="D:\FCC Sizing UI\Sizing UI\Materials.html">Materials</a></p> -->
+      <p><a href="{{url_for('actuatorSizing')}}">Actuator Sizing</a></p>
+      <p><a href="{{url_for('accessories')}}">Accessories, Order Processing</a></p>
+      <p><a href="{{url_for('itemNotes')}}">Item Notes</a></p>
+      <p><a href="{{url_for('projectNotes')}}">Project Notes</a></p>
+      <button style="font-size:18px;border:1px groove;">Logout <i class="fa fa-sign-out"></i></button>
+    </div>
+
+
+
+    <div class="col-9">
+      <div class="row head">
+
+        <div class="col-1">
+          <div class="row" style="margin-top:30px;">
+            <div class="col-12">
+              <i class="fa-solid fa-users fa-2x" data-toggle="tooltip" title="User"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove; ">
+            <h5 style="text-align: center;">Project</h5>
+            <div class="col-2">
+              <i class="fa-solid fa-folder-plus fa-1x" data-toggle="tooltip" title="Create Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-folder-minus fa-1x" data-toggle="tooltip" title="Delete Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Copy Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-download fa-1x" data-toggle="tooltip" title="Import Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-upload fa-1x" data-toggle="tooltip" title="Export Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-sliders fa-1x" data-toggle="tooltip" title="Preference"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="row">
+            <div class="col-12" style="text-align: center;">
+              <p style="border: groove; border-radius: 0px;">AQ {{item_d.tag_no}} 00{{item_d.id}} {{item_d.alt}}</p>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-backward-fast fa-1x"></i><br>
+              <label for="">First</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-backward-step fa-1x"></i><br>
+              <label for="">Prev.</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-forward-step fa-1x"></i><br>
+              <label for="">Next</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-forward-fast fa-1x"></i><br>
+              <label for="">Last</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-3">
+          <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+            <h5 style="text-align: center;">Item</h5>
+            <div class="col-2">
+              <i class="fa-solid fa-file-circle-plus fa-1x" data-toggle="tooltip" title="Create Item"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-circle-minus fa-1x" data-toggle="tooltip" title="Delete Item"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Item Copy"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-export fa-1x" data-toggle="tooltip" title="Copy From"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-import fa-1x" data-toggle="tooltip" title="Copy To"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-object-ungroup fa-1x" data-toggle="tooltip" title="Alternate"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row" style="margin-top:30px;">
+            <div class="col-12">
+              <i class="fa-solid fa-print fa-2x" data-toggle="tooltip" title="Print"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <form action="{{ url_for('valveSizing') }}" method="post">
+        <div class="row">
+          <div class="col-4 labels">
+            <table style="width:70%">
+              <tr>
+                <th>Page</th>
+                <th class="s-tag1">Units</th>
+              </tr>
+              <tr>
+                <td>Flowrate</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="flowRateUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Inlet Pressure</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="iPresUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Outlet Pressure</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="oPresUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Inlet Temprature</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="iTempUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Specific Gravity</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="sGravityUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Vapor Pressure</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="vPresUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Viscosity</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="viscosityUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Vapor.MW</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="vaporMWUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Vapor.Inlet</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="vaporInletUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Vapor.Outlet</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="vaporOutletUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>---------------</td>
+              </tr>
+              <tr>
+                <td>Calculated CV</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="calCVUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+              </tr>
+              <tr>
+                <td>Open Percent</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="openPercentUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Valve SPL</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="SPLUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Inlet Velocity</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="iVelocityUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Pipe Velocity</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="pVelocityUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Outlet Velocity</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="oVelocityUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              <tr>
+                <td>Choked Drop</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="chokeUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Xt</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="XtUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Warning</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="warningUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Trim Exit Vel</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="tExVelUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Sigma</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="sigmaUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Sigma MR</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="sigmaUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>Required Stages</td>
+                <td class="s-tag1">
+                  <select class="s-tag" name="stagesUnit">
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+
+          </div>
+
+          {% for i in cases %}
+          <div class="col-2 templating">
+            <table style="width:100%">
+              <tr class="">
+                <th class="template1">Case {{i.id}}</th>
+              </tr>
+              <tr class="template">
+                <td>{{i.flowrate}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.iPressure}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.oPressure}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.iTemp}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.sGravity}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.vPressure}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.viscosity}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.vaporMW}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.vaporInlet}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.vaporOutlet}}</td>
+
+              </tr>
+              <tr class="">
+                <td class="template1">---------------</td>
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.CV}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.openPercent}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.valveSPL}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.iVelocity}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.pVelocity}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.oVelocity}}</td>
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.chokedDrop}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.Xt}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.warning}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.trimExVelocity}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.sigmaMR}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.sigmaMR}}</td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">{{i.reqStage}}</td>
+              </tr>
+            </table>
+
+
+          </div>
+
+          {% endfor %}
+          <div class="col-2 inputRow">
+            <table>
+              <tr class="">
+                <th class="template1">Case</th>
+              </tr>
+              <tr class="template">
+                <td class="template1">
+                  <input type="number" name="flowrate" value="" class="input2">
+                </td>
+              </tr>
+              <tr class="template">
+                <td class="template1">
+                  <input type="number" name="iPressure" value=''>
+
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">
+                  <input type="number" name="oPressure" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">
+                  <input type="number" name="iTemp" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td class="template1">
+                  <input type="number" name="sGravity" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="vPressure" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="viscosity" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="VaporMW" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="VInlet" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="VOutlet" value="">
+                </td>
+
+              </tr>
+              <tr class="">
+                <td>---------------</td>
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="CalCV" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="OPercent" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="ValveSPL" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="IVelocity" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="PVelocity" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="OVelocity" value="">
+                </td>
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="ChokedDrop" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="Xt" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="Warning" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="TrimExitVel" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="Sigma" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="SigmaMR" value="">
+                </td>
+
+              </tr>
+              <tr class="template">
+                <td>
+                  <input type="number" name="RequiredStages" value="">
+                </td>
+              </tr>
+            </table>
+
+          </div>
+          <div class="col-4" style="background-color: #D6E4E5; height: 400px;">
+            <h3>Fluid Data</h3>
+            <div class="row">
+              <div class="col-6" style="text-align: right;">
+                <label for="fluid_name">Fluid Name</label>
+              </div>
+              <div class="col-6">
+                <select class="" id="fluid_name" name="fluid_name" style="height:20px;">
+                  <option value="">iiiiiiiii</option>
+                </select>
+              </div>
+              <div class="col-6" style="text-align: right;">
+                <label for="fState">Fluid State</label>
+              </div>
+              <div class="col-6">
+                <select class="" id="fState" name="fState" style="height:20px;">
+                  <option value="Liquid">Liquid</option>
+                  <option value="Gas">Gas</option>
+                </select>
+              </div>
+              <div class="col-6" style="text-align: right;">
+                <label for="cPressure">Critical Pressure</label>
+              </div>
+              <div class="col-6">
+                <input type="number" id="cPressure" name="cPressure" value="0" style='width: 100px;'>
+              </div>
+
+            </div>
+
+
+
+
+
+
+            <br><br>
+            <h3>Pipe Data</h3>
+            <div class="row">
+              <div class="col-6" style="text-align: right;">
+                <label for="iPipeSize">Inlet Pipe Size</label>
+              </div>
+              <div class="col-6">
+                <input type="number" id="iPipeSize" name="iPipeSize" value="0" style='width: 100px;'>
+              </div>
+              <div class="col-6" style="text-align: right;">
+                <label for="sThickness1">Scheduled Thickness</label>
+              </div>
+              <div class="col-6">
+                <select class="" id="sThickness1" name="sThickness1" style="height:20px;">
+                  <option value="">iiiiiiiii</option>
+                </select>
+              </div>
+              <div class="col-6" style="text-align: right;">
+                <label for="oPipeSize">Outlet Pipe Size</label>
+              </div>
+              <div class="col-6">
+                <input type="number" id="oPipeSize" name="oPipeSize" value="0" style='width: 100px;'>
+              </div>
+              <div class="col-6" style="text-align: right;">
+                <label for="sThickness2">Scheduled Thickness</label>
+              </div>
+              <div class="col-6">
+                <select class="" id="sThickness2" name="sThickness2" style="height:20px;">
+                  <option value="">iiiiiiiii</option>
+                </select>
+              </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+          <br>
+          <br>
+          <input type="submit" value="Calculate" style="height: 30px; width: 200px;">
+
+
+          </div>
+
+
+        </div>
+
+      </form>
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

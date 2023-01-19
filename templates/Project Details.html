@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Crimson+Text&family=EB+Garamond&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a18974e73a.js" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/styles.css">
+
+
+  </head>
+
+  <body>
+
+    <div class="row" style="margin-top:3px;">
+      <div class="col-2 nav-items" style="height:700px;">
+        <img src="static/images/Logo.png" alt="" style="width: 80%; text-align: left;margin-bottom: 10px;">
+        <p><a href="{{url_for('home')}}"> DashBoard</a></p>
+        <p><a href="{{url_for('projectDetails')}}">Project Details</a></p>
+        <p><a href="{{url_for('valveSelection')}}">Valve Selection</a></p>
+        <p><a href="{{url_for('valveSizing')}}">Valve Sizing</a></p>
+        <!-- <p><a href="D:\FCC Sizing UI\Sizing UI\Materials.html">Materials</a></p> -->
+        <p><a href="{{url_for('actuatorSizing')}}">Actuator Sizing</a></p>
+        <p><a href="{{url_for('accessories')}}">Accessories, Order Processing</a></p>
+        <p><a href="{{url_for('itemNotes')}}">Item Notes</a></p>
+        <p><a href="{{url_for('projectNotes')}}">Project Notes</a></p>
+        <button style="font-size:18px;border:1px groove;">Logout <i class="fa fa-sign-out"></i></button>
+      </div>
+
+
+
+      <div class="col-10">
+        <div class="row head">
+
+          <div class="col-1">
+            <div class="row" style="margin-top:30px;">
+              <div class="col-12">
+                <i class="fa-solid fa-users fa-2x" data-toggle="tooltip" title="User"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+              <h5 style="text-align: center;">Project</h5>
+              <div class="col-2">
+                <i class="fa-solid fa-folder-plus fa-1x" data-toggle="tooltip" title="Create Project"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-folder-minus fa-1x" data-toggle="tooltip" title="Delete Project"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Copy Project"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-download fa-1x" data-toggle="tooltip" title="Import Project"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-upload fa-1x" data-toggle="tooltip" title="Export Project"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-sliders fa-1x" data-toggle="tooltip" title="Preference"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-4">
+            <div class="row">
+              <div class="col-12" style="text-align: center;">
+                <p style="border: groove; border-radius: 0px;">AQ {{item_d.tag_no}} 00{{item_d.id}} {{item_d.alt}}</p>
+              </div>
+              <div class="col-3">
+                <i class="fa-solid fa-backward-fast fa-1x"></i><br>
+                <label for="">First</label>
+              </div>
+              <div class="col-3">
+                <i class="fa-solid fa-backward-step fa-1x"></i><br>
+                <label for="">Prev.</label>
+              </div>
+              <div class="col-3">
+                <i class="fa-solid fa-forward-step fa-1x"></i><br>
+                <label for="">Next</label>
+              </div>
+              <div class="col-3">
+                <i class="fa-solid fa-forward-fast fa-1x"></i><br>
+                <label for="">Last</label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-3">
+            <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+              <h5 style="text-align: center;">Item</h5>
+              <div class="col-2">
+                <i class="fa-solid fa-file-circle-plus fa-1x" data-toggle="tooltip" title="Create Item"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-file-circle-minus fa-1x" data-toggle="tooltip" title="Delete Item"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Item Copy"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-file-export fa-1x" data-toggle="tooltip" title="Copy From"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-solid fa-file-import fa-1x" data-toggle="tooltip" title="Copy To"></i>
+              </div>
+              <div class="col-2">
+                <i class="fa-regular fa-object-ungroup fa-1x" data-toggle="tooltip" title="Alternate"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-1">
+            <div class="row" style="margin-top:30px;">
+              <div class="col-12">
+                <i class="fa-solid fa-print fa-2x" data-toggle="tooltip" title="Print"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <form action="{{ url_for('projectDetails') }}" method="post">
+
+
+          <div class="row tools " style="text-align: center; margin-left: 3px; margin-right: 3px;  margin-top: 30px; ">
+            <div class="col-5 " style="background-color: #EAEAEA;">
+              <div class=" row">
+                <div class="col-12">
+                  <h5 class="" style="text-align: left" ;>Project details</h5>
+                </div>
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="customer">Customer Name</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="text" name="customer" id="customer" value="" style="width:165px">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="eRef">EngineerProject Ref.</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="text" name="eRef" value="" id="eRef" style="width:165px">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="eDate">Enquiry Date</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="date" name="eDate" value="" id="eDate" style="width:165px">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="rDate">Received Date</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="date" name="rDate" value="" id="rDate" style="width:165px">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="bDate">Bid Due Date</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="date" name="bDate" value="" id="bDate" style="width:165px">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="aEng">Application Engineer</label>
+                  </div>
+
+                  <div class="col-3">
+                    <select name="aEng" id="aEng" style=" height: 25px; width: 165px;">
+                      <option value="Divya">Divya</option>
+                      <option value="Nisha">Nisha</option>
+                      <option value="Suraj">Suraj</option>
+                      <option value="Veerapandi">Veerapandi</option>
+
+                    </select>
+                  </div>
+                  <!-- <div class="col-3">
+                  <input type="text" name="" value="" style="width: 165px;">
+                </div> -->
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="purpose">Purpose</label>
+                  </div>
+                  <div class="col-3">
+                    <select name="purpose" id="purpose" style=" height: 25px; width: 165px;">
+                      <option value="Bid ON">Bid On</option>
+                      <option value="Budget">Budget</option>
+                      <option value="Example">Example</option>
+                      <option value="OrdertoPlace">Order to Place</option>
+                      <option value="Technical">Technical</option>
+                    </select>
+                  </div>
+                </div>
+
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="industry">Industry</label>
+                  </div>
+                  <div class="col-3">
+                    <select name="industry" id="industry" style=" height: 25px; width: 165px;">
+                      <option value="Agriculture">Agriculture</option>
+                      <option value="Chemical">Chemical</option>
+                      <option value="Drink">Drink</option>
+                      <option value="Food">Food</option>
+                      <option value="Gas Transport / Distribution">Gas Transport / Distribution</option>
+                      <option value="Heating and Ventilation">Heating and Ventilation</option>
+                      <option value="Industrial Gas Production">Industrial Gas Production</option>
+                      <option value="Iron & Steel Production">Iron & Steel Production</option>
+                      <option value="Marine">Marine</option>
+                      <option value="Minig">Minig</option>
+                      <option value="Miscellaneous">Miscellaneous</option>
+                      <option value="Oil & Gas Production Offshore">Oil & Gas Production Offshore</option>
+                      <option value="Oil & Gas Production Onshore">Oil & Gas Production Onshore</option>
+                      <option value="OEM">OEM</option>
+                      <option value="Paper & Board">Paper & Board</option>
+                      <option value="Petrochemical">Petrochemical</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="region">Region</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="text" name="region" value="" id="region" style="width:165px">
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-6" style='text-align: right;'>
+                    <label for="projectRev">Project Revision</label>
+                  </div>
+                  <div class="col-3">
+                    <input type="text" name="projectRev" value="" id="projectRev" style="width:165px">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-4">
+              <h5 class="" style="text-align: left" ;>Order Information</h5>
+
+
+              <div class="row">
+                <div class="col-6" style='text-align: right;'>
+                  <label for="cEng">Contract Engineer</label>
+                </div>
+                <div class="col-6">
+                  <select name="cEng" id="cEng" style=" height: 25px; width: 165px;">
+                    <option value="Nishanth">Nishanth</option>
+                    <option value="Suraj">Suraj</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6" style='text-align: right;'>
+                  <label for="cNo">Customer PO No</label>
+                </div>
+                <div class="col-6" style=''>
+                  <input type="text" name="cNo" value="" id="cNo" style="width:165px">
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6" style='text-align: right;'>
+                  <label for="wNo">Work Order No</label>
+                </div>
+                <div class="col-6">
+                  <input type="text" name="wNo" value="" id="wNo" style="width:165px">
+                </div>
+                <div class="row" style="height:30px;">
+                  <h1></h1>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <input type="submit" value="Add Project" style="width:165px">
+                </div>
+
+              </div>
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+          </div>
+
+
+
+        </form>
+
+      </div>
+
+
+
+    </div>
+
+
+    <script>
+      $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+
+
+  </body>
+
+</html>

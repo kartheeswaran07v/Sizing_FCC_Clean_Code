@@ -1,0 +1,595 @@
+{% block content %}
+{% include "header.html" %}
+
+
+
+
+
+    <div class="col-10">
+      <div class="row head">
+
+        <div class="col-1">
+          <div class="row" style="margin-top:30px;">
+            <div class="col-12">
+              <i class="fa-solid fa-users fa-2x" data-toggle="tooltip" title="User"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+          <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove;">
+            <h5 style="text-align: center;">Project</h5>
+            <div class="col-2">
+              <i class="fa-solid fa-folder-plus fa-1x" data-toggle="tooltip" title="Create Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-folder-minus fa-1x" data-toggle="tooltip" title="Delete Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Copy Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-download fa-1x" data-toggle="tooltip" title="Import Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-upload fa-1x" data-toggle="tooltip" title="Export Project"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-sliders fa-1x" data-toggle="tooltip" title="Preference"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-4">
+          <div class="row">
+            <div class="col-12" style="text-align: center;">
+              <p style="border: groove; border-radius: 0px;">AQ {{item_d.tag_no}} 00{{item_d.id}} {{item_d.alt}}</p>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-backward-fast fa-1x"></i><br>
+              <label for="">First</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-backward-step fa-1x"></i><br>
+              <label for="">Prev.</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-forward-step fa-1x"></i><br>
+              <label for="">Next</label>
+            </div>
+            <div class="col-3">
+              <i class="fa-solid fa-forward-fast fa-1x"></i><br>
+              <label for="">Last</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-3">
+          <div class="row" style="margin-top:15px;border-left: 1px groove;border-right:  1px groove; ">
+            <h5 style="text-align: center;">Item</h5>
+            <div class="col-2">
+              <i class="fa-solid fa-file-circle-plus fa-1x" data-toggle="tooltip" title="Create Item"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-circle-minus fa-1x" data-toggle="tooltip" title="Delete Item"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-copy fa-1x" data-toggle="tooltip" title="Item Copy"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-export fa-1x" data-toggle="tooltip" title="Copy From"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-solid fa-file-import fa-1x" data-toggle="tooltip" title="Copy To"></i>
+            </div>
+            <div class="col-2">
+              <i class="fa-regular fa-object-ungroup fa-1x" data-toggle="tooltip" title="Alternate"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-1">
+          <div class="row" style="margin-top:30px;">
+            <div class="col-12">
+              <i class="fa-solid fa-print fa-2x" data-toggle="tooltip" title="Print"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form action="{{ url_for('valveSizing') }}" method="post">
+        <div class="row">
+        <div class="col-6 " style="margin-top:10px;margin-left:20px;">
+          <!-- <h5 class="Process" style="text-align: center" ;>Process Data</h5> -->
+
+
+          <div class="size">
+            <table style="text-align: left;margin-top:20px;" >
+              <thead class="th1" style="background-color:#EAEAEA">
+                <tr>
+                  <th style="width:30%">
+                    <label style="width:50px;font-size:16px;" for="">Page</label>
+                    <button type="button" name="button" style="border: 1px solid white;">+</button>
+                    <button type="button" name="button" style="border: 1px solid white;">-</button>
+                  </th>
+                  <th style="width:20%">
+
+                    <label style="width:50px;font-size:16px;" for="">Units</label>
+
+                  </th>
+                  {% for i in cases %}
+                  <th style="width:20%">
+
+                    <button type="button" name="button" style="border: 1px solid white;"><a href="{{url_for('deleteCase', case_id=i.id)}}">x</a></button>
+                    <label style="width:50px;font-size:16px;" for="">Case{{i.id}}</label>
+
+                  </th>
+
+                  {% endfor %}
+                  <th style="width:20%">
+
+                    <label style="width:50px;font-size:16px;" for="">Case-i</label>
+
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody class="size1">
+                <tr>
+                  <td><label style="margin-left:5px;" for="flowrate">Flowrate</label></td>
+                  <td>
+                    <select name="" id="unit" style="width:90px; height: 23px;border: 1px solid white;">
+                      <option value="">m3/hr</option>
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+                    </select>
+                  </td>
+                  {% for i in cases %}
+                    <td class="">{{i.flowrate}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id="flowrate" name="flowrate" style="width:90px;border: 1px solid white;"></input></td>
+
+
+
+                </tr>
+                <tr>
+                  <td><label style="margin-left:5px;" for="iPressure">Inlet Pressure</label></td>
+                  <td>
+                    <select name="" id=" " style="width:90px; height: 23px;border: 1px solid white;">
+                      <option value="">bar(g)</option>
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+                    </select>
+                  </td>
+                  {% for i in cases %}
+                    <td class="">{{i.iPressure}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id='iPressure' name="iPressure" style="width:90px;border: 1px solid white;"></input></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="oPressure">Outlet Pressure</label></td>
+                  <td>
+                    <select name="" id=" " style="width:90px; height: 23px;border: 1px solid white;">
+                      <option value="">bar(g)</option>
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+                    </select>
+                  </td>
+                  {% for i in cases %}
+                    <td class="">{{i.oPressure}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id="oPressure" name="oPressure" style="width:90px;border: 1px solid white;"></input></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="iTemp">Inlet Temprature</label></td>
+                  <td>
+                    <select name="" id=" " style="width:90px; height: 23px;border: 1px solid white;">
+                      <option value="">°C</option>
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+                    </select>
+                  </td>
+                  {% for i in cases %}
+                    <td class="">{{i.iTemp}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id='iTemp' name="iTemp" style="width:90px;border: 1px solid white;"></input></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="sGravity">Specific Gravity</label></td>
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></input></td>
+                  {% for i in cases %}
+                    <td class="">{{i.sGravity}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id='sGravity' name="sGravity" style="width:90px;border: 1px solid white;"></input></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="vPressure">Vapor Pressure</label></td>
+                  <td>
+                    <select name="" id=" " style="width:90px; height: 23px;border: 1px solid white;">
+                      <option value="">bar(g)</option>
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+                    </select>
+                  </td>
+                  {% for i in cases %}
+                    <td class="">{{i.vPressure}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id="vPressure" name="vPressure" style="width:90px;border: 1px solid white;"></input></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="viscosity">Viscosity</label></td>
+                  <td style="width:90px;">Centipoise</td>
+                  {% for i in cases %}
+                    <td class="">{{i.viscosity}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input id="viscosity" name='viscosity' style="width:90px;border: 1px solid white;"></input></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Vapor.MW</label></td>
+                  <td style="width:90px;"></td>
+                  {% for i in cases %}
+                    <td class="">{{i.vaporMW}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></input></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Vapor.Inlet</label></td>
+                  <td style="width:90px;"></td>
+                  {% for i in cases %}
+                    <td class="">{{i.vaporInlet}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></input></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Vapor.Outlet</label></td>
+                  <td style="width:90px;"></td>
+                  {% for i in cases %}
+                    <td class="">{{i.vaporOutlet}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></input></td>
+                </tr>
+
+
+              </tbody>
+            </table>
+
+            <input type="submit" value="Calculate">
+
+            <div class="row" >
+              <div class="col-12" style="margin-top:20px;">
+                <!-- <h5 class="output" >Calculation Results</h5> -->
+              </div>
+            </div>
+
+
+            <table style="text-align: left;">
+
+              <!-- <thead class="th">
+                <tr>
+                  <th style="width:30%">Page</th>
+                  <th style="width:20%">Unit</th>
+                  <th style="width:20%">Case1</th>
+                  <th style="width:20%">Case2</th>
+                  <th style="width:20%">Case3</th>
+
+                </tr>
+              </thead> -->
+
+              <tbody class="size1">
+
+                <tr>
+                  <td style="margin-left:5px;"><label style="margin-left:5px;" for="">Calculated CV</label></td>
+                  <td style="width:90px;"></td>
+                  {% for i in cases %}
+                    <td class="">{{i.CV}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Open Percent</label></td>
+                  <td style="width:90px;">%</td>
+                  {% for i in cases %}
+                    <td class="">{{i.openPercent}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Valve SPL</label></td>
+                  <td>dBA</td>
+                  {% for i in cases %}
+                    <td class="">{{i.valveSPL}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td> <label style="margin-left:5px;" for="">Inlet Velocity</label></td>
+                  <td>
+                    <select name="" id=" " style="width:90px; height: 23px;border: 1px solid white;">
+                      <option value="">m/s</option>
+<!--                      <option value="">2</option>-->
+<!--                      <option value="">3</option>-->
+<!--                      <option value="">4</option>-->
+                    </select>
+                  </td>
+                  {% for i in cases %}
+                    <td class="">{{i.iVelocity}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Outlet Velocity</label></td>
+                  <td>m/s</td>
+                  {% for i in cases %}
+                    <td class="">{{i.oVelocity}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Pipe Velocity</label></td>
+                  <td>m/s</td>
+                  {% for i in cases %}
+                    <td class="">{{i.pVelocity}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Choked Drop</label></td>
+                  <td></td>
+                  {% for i in cases %}
+                    <td class="">{{i.chokedDrop}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Xt</label></td>
+                  <td></td>
+                  {% for i in cases %}
+                    <td class="">{{i.Xt}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Warning</label></td>
+                  <td></td>
+                  {% for i in cases %}
+                    <td class="">{{i.warning}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Trim Exit Vel</label></td>
+                  <td>m/s</td>
+                  {% for i in cases %}
+                    <td class="">{{i.trimExVelocity}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Sigma</label></td>
+                  <td></td>
+                  {% for i in cases %}
+                    <td class="">{{i.sigmaMR}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Sigma MR</label></td>
+                  <td></td>
+                  {% for i in cases %}
+                    <td class="">{{i.sigmaMR}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+
+                <tr>
+                  <td><label style="margin-left:5px;" for="">Required Stages</label></td>
+                  <td></td>
+                  {% for i in cases %}
+                    <td class="">{{i.reqStage}}</td>
+                  {% endfor %}
+                  <td style="width:90px;"><input style="width:90px;border: 1px solid white;"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+
+
+
+
+        <div class="col-5 tools" style="margin-top:30px;margin-left: 30px;background-color: #EAEAEA;">
+          <div class="row">
+            <div class="col-12 tools" style="margin-top:10px;">
+              <h5 class=" " style="text-align: left" ;>Fluid Data</h5>
+              <div class="row" style="margin-top:10px;">
+                <div class="col-5" style='text-align: right;'>
+                  <label for="">Fluid Name</label>
+                </div>
+
+                <div class="col-3">
+                  <select name="" id=" " style=" height: 25px; width: 70px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </div>
+
+                <div class="col-5" style='text-align: right;'>
+                  <label for="fState">Fluid State</label>
+                </div>
+
+                <div class="col-3">
+                  <select id="fState" name="fState" style=" height: 25px; width: 70px;">
+                    <option value="Liquid">Liquid</option>
+                    <option value="Gas">Gas</option>
+                  </select>
+                </div>
+
+                <div class="col-5" style='text-align: right;'>
+                  <label for="cPressure">Critical Press.</label>
+                </div>
+                <div class="col-3">
+                  <input type="text" name="cPressure" id="cPressure" value="" style="width: 70px;height: 25px;">
+                </div>
+                <div class="col-3">
+                  <select name="" id=" " style=" height: 25px; width: 50px;padding-left: 10px;">
+                    <option value="">1</option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+          <div class="row" style="margin-top:20px;">
+            <div class="col-12 tools ">
+              <h5 class="" style="text-align:left;">Pipe Data</h5>
+              <div class="row" style="margin-top:10px;">
+                <div class="col-5" style='text-align: right;'>
+                  <label for="iPipeSize">Inlet Pipe Size</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" name="iPipeSize" id="iPipeSize" value="" style="width: 70px;height: 25px;">
+                </div>
+
+                <div class="col-2">
+                  <select name="" id="" style="width: 50px;height:25px;">
+<!--                    <option value="">1</option>-->
+<!--                    <option value="">2</option>-->
+<!--                    <option value="">3</option>-->
+<!--                    <option value="">4</option>-->
+                  </select>
+                </div>
+
+                <div class="col-5" style='text-align: right;height:25px;'>
+                  <label for="">Schedule Thickness</label>
+                </div>
+                <div class="col-2">
+                  <select name="" id="" style="width: 50px;height:25px;">
+<!--                    <option value="">1</option>-->
+<!--                    <option value="">2</option>-->
+<!--                    <option value="">3</option>-->
+<!--                    <option value="">4</option>-->
+                  </select>
+                </div>
+
+                <div class="col-2">
+                  <input type="text" name="" value="" style="width: 50px;">
+                </div>
+
+                <div class="col-1" style="text-align: left;height:25px;">
+                  <p>ins</p>
+                </div>
+
+                <div class="col-5" style='text-align: right;'>
+                  <label for="oPipeSize">Outlet Pipe Size</label>
+                </div>
+                <div class="col-2">
+                  <input type="text" name="oPipeSize" id="oPipeSize" value="" style="width: 70px;height: 25px;">
+                </div>
+
+                <div class="col-2">
+                  <select name="2" id="" style="width: 50px;height:25px;">
+                    <option value="">ins</option>
+<!--                    <option value="">2</option>-->
+<!--                    <option value="">3</option>-->
+<!--                    <option value="">4</option>-->
+                  </select>
+                </div>
+
+                <div class="col-5" style='text-align: right;height:25px;'>
+                  <label for="">Schedule Thickness</label>
+                </div>
+
+                <div class="col-2">
+                  <select name="" id="" style="width: 50px;height:25px;">
+                    <option value=""></option>
+                    <option value="">2</option>
+                    <option value="">3</option>
+                    <option value="">4</option>
+                  </select>
+                </div>
+
+                <div class="col-2">
+                  <input type="text" name="" value="" style="width: 50px;">
+                </div>
+
+                <div class="col-1" style="text-align: left;height:25px;">
+                  <p>ins</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+
+
+
+
+
+      </form>
+
+
+
+
+
+    </div>
+  </div>
+
+{% include "footer.html" %}
+{% endblock %}

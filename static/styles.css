@@ -1,0 +1,321 @@
+body {
+  background-color: #F7F7F7;
+  font-family: 'Amiri', serif;
+
+}
+
+
+.back{
+  background:#F7F7F7;
+}
+
+.nav-items {
+  background: #EEEEEE;
+  padding-left: 25px;
+  padding-top: 27px;
+  /* height:700px; */
+}
+
+a:link {
+  color: #557153;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited {
+  color: #557153;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:hover {
+  color: #7D8F69;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+.head{
+    background: #EEEEEE;
+    text-align: center;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.btn {
+  background: #fafafa;
+  background-image: -webkit-linear-gradient(top, #fafafa, #ebebeb);
+  background-image: -moz-linear-gradient(top, #fafafa, #ebebeb);
+  background-image: -ms-linear-gradient(top, #fafafa, #ebebeb);
+  background-image: -o-linear-gradient(top, #fafafa, #ebebeb);
+  background-image: linear-gradient(to bottom, #fafafa, #ebebeb);
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 1px;
+  -webkit-box-shadow: 3px 1px 0px #c6cccc;
+  -moz-box-shadow: 3px 1px 0px #c6cccc;
+  box-shadow: 3px 1px 0px #c6cccc;
+  font-family: Georgia;
+  color: #051408;
+  font-size:15px;
+  /* padding: 10px 30px 10px 29px; */
+  border: solid #848f8f 2px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #92999e;
+  text-decoration: none;
+}
+
+input {
+  border: 1px groove;
+  outline-color: groove;
+  border-radius: 0px;
+  height: 20px;
+  /* border: 1px solid; */
+  /* color: groove; */
+}
+/* input:focus {
+    outline:none;
+} */
+
+.popup {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* The actual popup */
+.popup .popuptext {
+  visibility: hidden;
+  width: 160px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 8px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -80px;
+}
+
+/* Popup arrow */
+.popup .popuptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Toggle this class - hide and show the popup */
+.popup .show {
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity:1 ;}
+}
+
+table, td, th {
+  border: 1px groove ;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+.th{
+  position: sticky;
+  top: 0;
+  background-color: #EAEAEA;
+  height: 35px;
+   font-size: 20px;
+}
+
+.th{
+  position: sticky;
+  top: 0;
+  background-color: #EAEAEA;
+  height: 20px;
+   font-size: 15px;
+}
+
+.size1{
+ font-size: 15px;
+ height: 15px;
+}
+
+
+th,td {
+  height: 1px;
+
+}
+
+.line{
+  display:block; width:100%; border-bottom:5px solid red; margin-top:25px; text-align:center
+}
+.line h5{
+  font-size:16px; text-align:center; position:relative;  display:inline-block;
+}
+
+.Material{
+
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 158px;
+  right:  355px;
+
+}
+
+.projects{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 108px;
+  left: 255px;
+
+}
+
+
+.order{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 108px;
+  right:  490px;
+
+}
+
+.Accessories{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 108px;
+  left: 255px;
+
+}
+
+.Positioner{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 108px;
+  left: 635px;
+
+}
+
+
+.Pipe{
+  position: absolute;
+  /* background-color:#F7F7F7; */
+  /* border: 1px solid red; */
+  top: 228px;
+  left: 790px;
+
+}
+
+.Fluid {
+  position: absolute;
+  /* background-color:#F7F7F7; */
+  /* border: 1px solid red; */
+  top: 137px;
+  left: 790px;
+
+}
+
+
+.Valve{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 157px;
+  left: 255px;
+  width:auto ;
+}
+
+.Selection{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 157px;
+  left: 590px;
+  width:auto ;
+
+}
+
+.Pres{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 299px;
+  left: 255px;
+  width:auto ;
+}
+
+.Process{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 118px;
+  left: 270px;
+
+}
+
+.Trim{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 155px;
+  right: 260px;
+  width:auto ;
+}
+
+.output{
+  position: absolute;
+  background-color:#F7F7F7;
+  /* border: 1px solid red; */
+  top: 397px;
+  left: 270px;
+}
+
+.s-tag {
+  width: 50px;
+  height: 11px;
+  border: 1px solid white;
+}
+
+.template {
+  width: 100px;
+  height: 31px;
+}
+
+.inputRow input {
+  width: 100px;
+  border: 1px solid white;
+}
+
+.inputRow td {
+  width: 102px;
+}
+
+.template1 {
+  height: 23px;
+}
